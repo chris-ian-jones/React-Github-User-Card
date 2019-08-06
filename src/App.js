@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components'
+import MainUserCard from './MainUserCard'
 
 const StyledPlaceholder = styled.p`
   color: red;
@@ -18,6 +19,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <StyledPlaceholder>placeholder text</StyledPlaceholder>
+        <MainUserCard />
       </div>
     );
   }
