@@ -3,7 +3,6 @@ import { Card, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 const FollowerCard = props => {
-  // console.log(props)
   return (
     <Card>
       <Image src={`${props.follower.avatar_url}`} wrapped ui={false} />

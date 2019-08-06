@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Button, Form } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const SearchContainer = styled.div`
@@ -25,8 +25,11 @@ class SearchForm extends React.Component {
 
   render(){
     return (
-      <SearchContainer>
-        <Input onChange={this.changeInputHandler} onClick={this.onClickHandler} icon='search' placeholder='Input GitHub Username...' size='massive' />
+      <SearchContainer onSubmit={this.onClickHandler}>
+        <Form>
+        <Input onChange={this.changeInputHandler} icon='search' placeholder='Input GitHub Username...' size='massive' />
+        <Button onClick={this.onClickHandler} size='massive'>Search</Button>
+        </Form>
       </SearchContainer>
     )
   }

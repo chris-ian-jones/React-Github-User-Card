@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components'
-import MainUserCard from './MainUserCard'
-import FollowerCard from './FollowerCard'
-import SearchForm from './SearchForm'
+import MainUserCard from './components/MainUserCard'
+import FollowerCard from './components/FollowerCard'
+import SearchForm from './components/SearchForm'
 import { userInfo } from 'os';
 
 const MainUserContainer = styled.div`
@@ -18,6 +18,7 @@ const FlexRowContainer = styled.div`
   flex-wrap: wrap;
   max-width: 100%;
   justify-content: space-evenly;
+  margin-bottom: 60px;
 `
 
 class App extends React.Component {
@@ -43,10 +44,9 @@ class App extends React.Component {
   }
 
   updateSearchUser = username => {
-    console.log(username)
     this.setState({ searchUserName: username })
     this.fetchMainUserData()
-    // this.fetchFollowersData()
+    this.fetchFollowersData()
   }
 
   componentDidMount() {
@@ -55,18 +55,16 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('upon render! searchUserName:', this.state.searchUserName)
-    // console.log('upon render! followersData:', this.state.followersData)
     return (
       <div className="App">
         <MainUserContainer>
           <SearchForm updateSearchUser={this.updateSearchUser}/>
           <MainUserCard mainUserData={this.state.mainUserData}/>
-          <h2>Followers</h2>
+          <h2>Followers:</h2>
         </MainUserContainer>
         <FlexRowContainer>
           {this.state.followersData.map(follower => {
-            return <FollowerCard follower={follower}/>
+            return <FollowerCard follower={follower} />
           })}
         </FlexRowContainer>
       </div>
