@@ -3,6 +3,7 @@ import './App.css';
 import styled from 'styled-components'
 import MainUserCard from './MainUserCard'
 import FollowerCard from './FollowerCard'
+import SearchForm from './SearchForm'
 
 const MainUserContainer = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <MainUserContainer>
-          <h1>User</h1>
+          <SearchForm />
           <MainUserCard mainUserData={this.state.mainUserData}/>
           <h2>Followers</h2>
         </MainUserContainer>
