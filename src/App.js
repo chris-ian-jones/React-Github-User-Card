@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import styled from 'styled-components'
 import MainUserCard from './MainUserCard'
+import 'semantic-ui-css/semantic.min.css'
 
 const StyledPlaceholder = styled.p`
   color: red;
@@ -11,19 +12,18 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: []
+      mainUserData: []
     }
   }
 
   fetchMainUserData = () => {
     fetch(`https://api.github.com/users/bigknell`)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         return response.json()
       })
-      // .then(response => this.setState({ data: response }))
-      .then(response => {console.log(response)})
-
+      // .then(response => {console.log(response)})
+      .then(response => this.setState({ mainUserData: response }))
   }
 
   componentDidMount() {
@@ -31,10 +31,11 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log('upon render! mainUserData:', this.state.mainUserData)
     return (
       <div className="App">
         <StyledPlaceholder>placeholder text</StyledPlaceholder>
-        <MainUserCard />
+        <MainUserCard mainUserData={this.state.mainUserData}/>
       </div>
     );
   }
