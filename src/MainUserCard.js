@@ -10,18 +10,19 @@ const MainUserCard = props => {
     <Card>
     <Image src={`${props.mainUserData.avatar_url}`} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>Matthew</Card.Header>
+      <Card.Header>{props.mainUserData.login}</Card.Header>
       <Card.Meta>
-        <span className='date'>Joined in 2015</span>
+        <span className='date'>{props.mainUserData.name}</span>
       </Card.Meta>
       <Card.Description>
-        Matthew is a musician living in Nashville.
+        <p>Company: {props.mainUserData.company}</p>
+        <p>Blog: {props.mainUserData.blog}</p>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
       <a>
         <Icon name='user' />
-        22 Friends
+        {props.mainUserData.followers} Followers
       </a>
     </Card.Content>
   </Card>

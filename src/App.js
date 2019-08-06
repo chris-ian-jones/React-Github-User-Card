@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import styled from 'styled-components'
 import MainUserCard from './MainUserCard'
-import 'semantic-ui-css/semantic.min.css'
+
 
 const StyledPlaceholder = styled.p`
   color: red;
@@ -34,7 +34,6 @@ class App extends React.Component {
     // console.log('upon render! mainUserData:', this.state.mainUserData)
     return (
       <div className="App">
-        <StyledPlaceholder>placeholder text</StyledPlaceholder>
         <MainUserCard mainUserData={this.state.mainUserData}/>
       </div>
     );
