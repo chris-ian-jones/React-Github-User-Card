@@ -1,12 +1,19 @@
 import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
-
 import 'semantic-ui-css/semantic.min.css'
 
 const FollowerCard = props => {
-  console.log(props)
+  // console.log(props)
   return (
-    <p>{props.follower.login}</p>
+    <Card>
+      <Image src={`${props.follower.avatar_url}`} wrapped ui={false} />
+      <Card.Content>
+        <Card.Header>{props.follower.login}</Card.Header>
+        <Card.Description>
+          <p>{props.follower.html_url}</p>
+        </Card.Description>
+      </Card.Content>
+    </Card>
   )
 }
 

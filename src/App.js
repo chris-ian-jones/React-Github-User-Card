@@ -4,6 +4,20 @@ import styled from 'styled-components'
 import MainUserCard from './MainUserCard'
 import FollowerCard from './FollowerCard'
 
+const MainUserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0 60px 0;
+`
+
+const FlexRowContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: space-evenly;
+`
+
 class App extends React.Component {
   constructor() {
     super()
@@ -35,10 +49,16 @@ class App extends React.Component {
     console.log('upon render! followersData:', this.state.followersData)
     return (
       <div className="App">
-        <MainUserCard mainUserData={this.state.mainUserData}/>
-        {this.state.followersData.map(follower => {
-          return <FollowerCard follower={follower}/>
-        })}
+        <MainUserContainer>
+          <h1>User</h1>
+          <MainUserCard mainUserData={this.state.mainUserData}/>
+          <h2>Followers</h2>
+        </MainUserContainer>
+        <FlexRowContainer>
+          {this.state.followersData.map(follower => {
+            return <FollowerCard follower={follower}/>
+          })}
+        </FlexRowContainer>
       </div>
     );
   }
