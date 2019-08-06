@@ -12,7 +12,7 @@ const MainUserCard = props => {
     <Card.Content>
       <Card.Header>{props.mainUserData.login}</Card.Header>
       <Card.Meta>
-        <span className='date'>{props.mainUserData.name}</span>
+        <p>{props.mainUserData.name}</p>
       </Card.Meta>
       <Card.Description>
         <p>Company: {props.mainUserData.company}</p>
