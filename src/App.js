@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MainUserCard from './components/MainUserCard'
 import FollowerCard from './components/FollowerCard'
 import SearchForm from './components/SearchForm'
-import { userInfo } from 'os';
 
 const MainUserContainer = styled.div`
   display: flex;
@@ -31,29 +30,39 @@ class App extends React.Component {
     }
   }
 
+  // method to use fetch API to grab account data dependant on username in state
   fetchMainUserData = () => {
     fetch(`https://api.github.com/users/${this.state.searchUserName}`)
       .then(response => response.json())
       .then(response => this.setState({ mainUserData: response }))
   }
 
+  // method to use fetch API to grab follower data dependant on username in state
   fetchFollowersData = () => {
     fetch(`https://api.github.com/users/${this.state.searchUserName}/followers`)
       .then(response => response.json())
       .then(response => this.setState({ followersData: response }))
   }
 
+  // method to update the username in state, then execute functions to get new data, then re-render page
   updateSearchUser = username => {
     this.setState({ searchUserName: username })
     this.fetchMainUserData()
     this.fetchFollowersData()
   }
 
+  // lifecycle method to set fetch API data and update state
   componentDidMount() {
     this.fetchMainUserData()
     this.fetchFollowersData()
   }
 
+  // ToDo: refactor code to incorporate componentDidUpdate
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('prevProps', prevProps)
+  // }
+
+  // lifecycle method to render components in JSX 
   render() {
     return (
       <div className="App">
@@ -64,7 +73,7 @@ class App extends React.Component {
         </MainUserContainer>
         <FlexRowContainer>
           {this.state.followersData.map(follower => {
-            return <FollowerCard follower={follower} />
+            return <FollowerCard follower={follower} key={follower.login}/>
           })}
         </FlexRowContainer>
       </div>

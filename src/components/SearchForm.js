@@ -5,6 +5,8 @@ import styled from 'styled-components'
 const SearchContainer = styled.div`
   margin-bottom: 40px;
 `
+
+// semantic-ui component to return form for input username to search form
 class SearchForm extends React.Component {
   constructor(props) {
     super()
@@ -13,12 +15,16 @@ class SearchForm extends React.Component {
     }
   }
 
+  // input handler to update state
   changeInputHandler = event => {
     this.setState({
       input: event.target.value
     })
   }
 
+  // onclick handler to invoke and pass through input state into
+  // updateSearchUser method - this method sets state of username to be searched on App.js
+  // then makes fetch api calls to update user/follower state data
   onClickHandler = event => {
     this.props.updateSearchUser(this.state.input)
   } 

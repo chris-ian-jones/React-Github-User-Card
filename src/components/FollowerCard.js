@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
+// semantic-ui component to return each follower data
 const FollowerCard = props => {
   return (
     <Card>
