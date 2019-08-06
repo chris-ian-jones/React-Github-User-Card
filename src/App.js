@@ -6,12 +6,21 @@ const StyledPlaceholder = styled.p`
   color: red;
 `
 
-function App() {
-  return (
-    <div className="App">
-      <StyledPlaceholder>placeholder text</StyledPlaceholder>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      data: []
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <StyledPlaceholder>placeholder text</StyledPlaceholder>
+      </div>
+    );
+  }
 }
 
 export default App;
