@@ -15,6 +15,21 @@ class App extends React.Component {
     }
   }
 
+  fetchMainUserData = () => {
+    fetch(`https://api.github.com/users/bigknell`)
+      .then(response => {
+        console.log(response)
+        return response.json()
+      })
+      // .then(response => this.setState({ data: response }))
+      .then(response => {console.log(response)})
+
+  }
+
+  componentDidMount() {
+    this.fetchMainUserData()
+  }
+
   render() {
     return (
       <div className="App">
