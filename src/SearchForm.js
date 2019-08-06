@@ -6,16 +6,27 @@ const SearchContainer = styled.div`
   margin-bottom: 40px;
 `
 class SearchForm extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
+    this.state = {
+      input: ''
+    }
   }
 
-  formSubmitHandler = (event) => console.log(event.target.value)
+  changeInputHandler = event => {
+    this.setState({
+      input: event.target.value
+    })
+  }
+
+  onClickHandler = event => {
+    this.props.updateSearchUser(this.state.input)
+  } 
 
   render(){
     return (
       <SearchContainer>
-        <Input onClick={this.formSubmitHandler} icon='search' placeholder='Input GitHub Username...' size='massive' />
+        <Input onChange={this.changeInputHandler} onClick={this.onClickHandler} icon='search' placeholder='Input GitHub Username...' size='massive' />
       </SearchContainer>
     )
   }

@@ -3,7 +3,7 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 const MainUserCard = props => {
-  console.log(props.mainUserData.login)
+  // console.log(props.mainUserData.login)
 
   return (
     <Card>

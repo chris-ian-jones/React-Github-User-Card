@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import MainUserCard from './MainUserCard'
 import FollowerCard from './FollowerCard'
 import SearchForm from './SearchForm'
+import { userInfo } from 'os';
 
 const MainUserContainer = styled.div`
   display: flex;
@@ -24,20 +25,28 @@ class App extends React.Component {
     super()
     this.state = {
       mainUserData: [],
-      followersData: []
+      followersData: [],
+      searchUserName: 'bigknell'
     }
   }
 
   fetchMainUserData = () => {
-    fetch(`https://api.github.com/users/bigknell`)
+    fetch(`https://api.github.com/users/${this.state.searchUserName}`)
       .then(response => response.json())
       .then(response => this.setState({ mainUserData: response }))
   }
 
   fetchFollowersData = () => {
-    fetch(`https://api.github.com/users/BigKnell/followers`)
+    fetch(`https://api.github.com/users/${this.state.searchUserName}/followers`)
       .then(response => response.json())
       .then(response => this.setState({ followersData: response }))
+  }
+
+  updateSearchUser = username => {
+    console.log(username)
+    this.setState({ searchUserName: username })
+    this.fetchMainUserData()
+    // this.fetchFollowersData()
   }
 
   componentDidMount() {
@@ -46,12 +55,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('upon render! mainUserData:', this.state.mainUserData)
-    console.log('upon render! followersData:', this.state.followersData)
+    console.log('upon render! searchUserName:', this.state.searchUserName)
+    // console.log('upon render! followersData:', this.state.followersData)
     return (
       <div className="App">
         <MainUserContainer>
-          <SearchForm />
+          <SearchForm updateSearchUser={this.updateSearchUser}/>
           <MainUserCard mainUserData={this.state.mainUserData}/>
           <h2>Followers</h2>
         </MainUserContainer>
@@ -64,5 +73,5 @@ class App extends React.Component {
     );
   }
 }
-
+// trwhatcott
 export default App;
